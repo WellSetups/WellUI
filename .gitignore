@@ -1,0 +1,9 @@
+**/target/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+/editor-data/
+/test-server/
+*.log

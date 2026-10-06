@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose an improvement with a concrete use case.
+title: '[Feature] '
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and server use case
+      description: What are players or administrators unable to do today?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior
+      description: Include an example configuration or player interaction when useful.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and compatibility considerations
+      description: Consider transaction semantics, Folia, existing configuration and migrations.

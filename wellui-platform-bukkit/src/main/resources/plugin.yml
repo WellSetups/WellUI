@@ -1,0 +1,53 @@
+name: WellUI
+version: '${project.version}'
+main: com.wellsetups.wellui.main.WellUI
+api-version: '1.20'
+author: WellSetups
+description: Visual UI documents, a secure editor, and screen, HUD and inventory renderers.
+folia-supported: true
+softdepend: [PlaceholderAPI, packetevents, ItemsAdder, Oraxen, Nexo, CraftEngine]
+commands:
+  wellui:
+    description: Open the WellUI command guide.
+    aliases: [wui]
+    usage: /<command>
+permissions:
+  wellui.admin:
+    description: Full WellUI administration and access to every project.
+    default: op
+  wellui.command.help:
+    default: true
+  wellui.command.editor:
+    default: op
+  wellui.command.open:
+    default: op
+  wellui.command.close:
+    default: true
+  wellui.command.others:
+    default: op
+  wellui.command.list:
+    default: op
+  wellui.command.reload:
+    default: op
+  wellui.command.info:
+    default: op
+  wellui.command.debug:
+    default: op
+  wellui.command.pack:
+    default: op
+  wellui.command.hudpack:
+    default: op
+  wellui.command.screenpack:
+    default: op
+  wellui.command.packload:
+    default: op
+  wellui.command.packverify:
+    default: op
+  wellui.command.packrepair:
+    default: op
+  wellui.command.preview:
+    default: op
+  wellui.command.migrate:
+    default: op
+  wellui.ui.example:
+    default: true

@@ -1,0 +1,31 @@
+name: Compatibility issue
+description: Report a server, economy provider or charged-plugin integration failure.
+title: '[Compatibility] '
+labels: [compatibility]
+body:
+  - type: textarea
+    id: versions
+    attributes:
+      label: Exact environment
+      description: WellCost, Minecraft, server software/build, Java, Vault/economy provider and target command plugin versions. Identify Folia explicitly.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Command/alias used, expected result, actual result, and whether the original command works with its price rule disabled on a test server.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Redacted configuration and logs
+      description: Remove credentials, personal data and private arguments. Include scheduler stack traces and transaction UUIDs where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependency compatibility
+      description: Link official platform support statements for the target command and economy provider if known.

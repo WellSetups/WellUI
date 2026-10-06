@@ -1,0 +1,331 @@
+prefix:
+  enabled: true
+  value: '&#b8f36aWellUI &8› &r'
+startup:
+  ready: 'WellUI {version} ready on {platform} {minecraft}; {count} deployed projects.'
+  next: 'Run /wellui editor to design a UI, or /wellui open example to try the starter menu.'
+  failed: 'WellUI could not start: {reason}. Review configuration and the documentation, then restart.'
+  command_missing: 'The plugin archive is missing the wellui command declaration.'
+command:
+  unknown: 'Unknown command. Use /wellui help.'
+  denied: 'You do not have permission to do that.'
+  help_line: '&f/wellui {label} &7— {description}'
+  list: 'Deployed projects: {projects}'
+  open_usage: 'Usage: /wellui open <project> [player] [--renderer auto|screen|hud|inventory] [--pack <HUD sha256>]'
+  close_usage: 'Usage: /wellui close [player]'
+  player_required: 'Specify an online player when using the console.'
+  closed: 'Your WellUI session has been closed, if one was open.'
+  working: 'Working. You will receive the result shortly.'
+  reloaded: 'Messages, safe settings and deployed projects reloaded.'
+  restart: 'A changed setting requires restart. No reload changes were applied.'
+  packed: 'Packs exported under plugins/WellUI/packs. No player pack prompts were sent.'
+  migrated: 'Configuration and draft documents migrated. Previous revisions were backed up.'
+  busy: 'The work queue is full. Try again shortly.'
+help:
+  packload: 'Offer the prepared SCREEN generation once, or retry a declined/failed offer.'
+  packverify: 'Inspect WellUI source integrity and compiled provider resources without changing files.'
+  packrepair: 'Restore only recorded WellUI sources and migrate their manifest; then rebuild with your pack provider.'
+  help: 'Show commands you can use.'
+  editor: 'Get a private editor link, valid for 30 minutes.'
+  open: 'Open a deployed project: <project> [player] [--renderer auto|screen|hud|inventory]. HUD also needs --pack <sha256>.'
+  close: 'Close a WellUI session: [player].'
+  list: 'List deployed projects.'
+  reload: 'Reload safe settings, locales and deployed projects.'
+  info: 'Show runtime capabilities and status.'
+  debug: 'Show a diagnostic summary without tokens or player identifiers.'
+  pack: 'Rebuild exported packs for deployed projects.'
+  hudpack: 'Build an experimental HUD pack: <project>.'
+  screenpack: 'Build an automatically profiled SCREEN pack and show its delivery URL: <project>.'
+  preview: 'Preview a manually installed HUD pack: <project> <sha256>.'
+  migrate: 'Migrate config and draft documents with backups.'
+editor:
+  disabled: 'The browser editor is disabled in config.yml.'
+  open: 'Click to open your private WellUI editor'
+  link: 'Private editor link (30 minutes): {url}'
+open:
+  opened: 'Interface opened.'
+  not_found: 'That project has not been deployed.'
+  offline: 'That player is not online.'
+  denied: 'The target player needs permission for that interface.'
+  cancelled: 'Opening was cancelled by an extension or another plugin.'
+  unavailable: 'The requested renderer is unavailable. Check the preceding reason and /wellui debug.'
+render:
+  button: '&7Left or right click to activate.'
+  text: '&8Text component'
+  image: 'Image'
+  image_hint: '&7Image exported to pack; inventory uses this placeholder.'
+  metadata: 'The server could not create inventory item metadata.'
+deploy:
+  inventory: 'Inventory backend (fallback): positions project onto 9×6 slots; styling, sizes and images are approximated. SCREEN uses a separate modern pack and renderer.'
+  collisions: 'Some components overlap the same inventory slot or fall outside it. Move them apart; the last component occupies a shared slot.'
+  missing_asset: 'The image for component {id} is missing. Upload it again.'
+debug:
+  report: 'WellUI {version} | {platform} {minecraft} | Java {java} | Folia={folia} | projects={projects} | sessions={sessions} | authored elements={components} | editor={editor} | PlaceholderAPI={papi} | bStats={metrics} | legacy pack SHA-256={hash}'
+  no_pack: 'not built in this process'
+error:
+  internal: 'The operation failed. Check the server log for the diagnostic.'
+  operation: 'Operation failed: {reason}'
+event:
+  failed: 'A WellUI extension event listener failed. Check installed addons.'
+integration:
+  failed: 'PlaceholderAPI could not resolve a value or initialize. Original text is retained.'
+config:
+  missing: 'config.yml is missing.'
+  invalid: 'config.yml is invalid YAML; no changes were applied.'
+  version: 'config-version must be 0 or 1.'
+  locale: 'locale must look like en_US.'
+  remote: 'editor.bind is not loopback. Set editor.allow-remote explicitly or use 127.0.0.1.'
+  port: 'editor.port must be an integer between 1 and 65535.'
+  public_url: 'editor.public-url must be a valid origin without credentials, path, query or fragment.'
+  https: 'A remote editor.public-url must use HTTPS.'
+  commands: 'Command labels must be unique lowercase words of at most 25 characters.'
+  assets: 'assets.max-bytes must be 1024 to 8388608.'
+  pack: 'packs.format must be a legacy format from 15 to 64. SCREEN uses its separate exact modern profile.'
+  refresh: 'runtime.placeholder-refresh-ms must be 500 to 60000.'
+  cooldown: 'runtime.click-cooldown-ms must be 100 to 10000.'
+  type:
+    config-version: 'config-version must be an integer.'
+    editor:
+      port: 'editor.port must be an integer.'
+      enabled: 'editor.enabled must be true or false.'
+      allow-remote: 'editor.allow-remote must be true or false.'
+    assets:
+      max-bytes: 'assets.max-bytes must be an integer.'
+    packs:
+      format: 'packs.format must be an integer.'
+    runtime:
+      placeholder-refresh-ms: 'runtime.placeholder-refresh-ms must be an integer.'
+      click-cooldown-ms: 'runtime.click-cooldown-ms must be an integer.'
+      pulse-buttons: 'runtime.pulse-buttons must be true or false.'
+    metrics:
+      enabled: 'metrics.enabled must be true or false.'
+locale:
+  bundled_missing: 'The archive is missing the bundled English locale.'
+  invalid: 'A locale file contains invalid YAML.'
+platform:
+  inventory_view: 'This server inventory API is incompatible with the installed WellUI adapter.'
+storage:
+  symlink: 'Storage refuses a symbolic link or non-regular file.'
+  project_limit: 'The maximum of 1024 stored projects was reached.'
+  invalid_document: 'A stored project is invalid. Restore its .json.bak file after stopping the server.'
+asset:
+  missing: 'A referenced image is missing.'
+  integrity: 'A stored image hash does not match its content.'
+  png: 'Upload a valid PNG image.'
+  dimensions: 'PNG dimensions must be between 1 and 2048 pixels.'
+  limit: 'Image exceeds the configured upload size limit.'
+  encoder: 'PNG encoding is unavailable in this Java runtime.'
+pack:
+  size_limit: 'This pack exceeds the 32 MiB total image limit. Reduce the number or size of images.'
+  format_unsupported: 'This exporter supports only legacy resource-pack formats 15 through 64.'
+hud:
+  visual_limits: 'Experimental HUD: static 256x128 canvas, bottom-center actionbar; baked font and opacity, no live placeholders, animation or automatic screen sizing. Other actionbars may conflict.'
+  input_limits: 'HUD images cannot receive mouse input. Open chat to activate the companion buttons. No HUD hover, right click, drag, scroll or text entry; ESC only closes chat. Use /wellui close. Preview expires after two minutes.'
+  pack_limits: 'HUD preview needs a separately built and manually installed format-15 pack (1.20/1.20.1 profile). Client loading cannot be detected. Rebuild and reinstall after document changes; only one project HUD pack should be enabled.'
+  pack_usage: 'Usage: /wellui hudpack <project>'
+  preview_usage: 'Install the generated HUD pack first, then acknowledge its full hash: /wellui preview <project> <sha256>'
+  packed: 'HUD pack: plugins/WellUI/hud-packs/{project}.zip | {bytes} bytes | {millis} ms | SHA-256 {hash}. Copy to your client resourcepacks folder and enable it, then use /wellui preview {project} {hash}. No download or pack prompt was sent.'
+  prepare: 'Preview unavailable: build the current deployed project with /wellui hudpack, install that pack on your client, then supply its full SHA-256. Opening errors are recorded in the server log.'
+  action: '[WellUI action: {label}]'
+  expired: 'That HUD action belongs to an expired or different session. Open a new preview.'
+  render_error: 'The renderer failed; the affected session was closed. Check the server log.'
+  debug: 'HUD PoC | sessions={sessions} | actionbar sends={sends} (API calls, not measured packets) | refresh=20 ticks | latest build={millis} ms / {bytes} bytes | SHA-256={hash}'
+  registry_invalid: 'The HUD glyph registry is corrupt or has an unsupported version. Restore a backup; do not delete it while packs are in use.'
+  registry_full: 'The HUD glyph registry is full. A versioned namespace migration is required; live glyphs will not be reused.'
+  button_limit: 'The HUD proof of concept supports at most 16 companion action buttons per project.'
+screen:
+  preparing: 'Preparing UI resources... Your UI will open automatically when the verified pack is loaded.'
+  provider_build_waiting: 'ItemsAdder rebuild required. Ask an administrator to build the pack with /iazip. This open will continue automatically when resources are ready.'
+  pack_waiting: 'Waiting for the resource provider to deliver the current pack. Accept the server resource pack to continue.'
+  vehicle: 'Close the vehicle camera before opening SCREEN.'
+  sleeping: 'Wake up before opening SCREEN.'
+  camera: 'Return to your own spectator camera before opening SCREEN.'
+  generation_limit: 'SCREEN assets exceed the generation pixel/size budget. Reduce quality, buttons or deployed content.'
+  merge_pending: 'ItemsAdder owns delivery: rebuild with /iazip, run /wellui packverify, then let ItemsAdder apply its new pack. WellUI will not send a competing pack.'
+  merge_verified: 'Merged ItemsAdder pack verified for current WellUI assets. SHA-1 {hash}. ItemsAdder must deliver this exact pack before SCREEN is ready.'
+  external_owner: 'An external pack owner is detected without a supported integration. Configure ownership explicitly.'
+  pack_ready: 'The current SCREEN generation is loaded; opening it will reuse these assets.'
+  shutdown: 'SCREEN packet adapter cleanup failed; continuing other service shutdown.'
+  startup: 'Screen engine: default={mode}, delivery={delivery}, packet adapter loaded={dependency}. Run /wellui debug. Live client acceptance is required.'
+  config: 'Invalid renderer/screen pack setting. Check modes, port and HTTP(S) URL; EXTERNAL_URL needs a {sha256} placeholder.'
+  dependency: 'SCREEN needs the enabled PacketEvents 2.14.0 plugin and its initialized adapter.'
+  version: 'SCREEN currently requires Paper/Purpur/Folia 1.21.11 and a native 1.21.11 client. Other 1.21.4+ profiles and 26.x are not implemented.'
+  pack_api: 'The additive pack API with request UUID status events is unavailable.'
+  host_failed: 'The screen pack HTTP listener could not start. Check its bind address, port conflicts and firewall; restart after correcting it. Pack export and other backends remain available.'
+  export_only: 'EXPORT_ONLY: files are exported but automatic pack readiness is unavailable. Configure SELF_HOSTED or EXTERNAL_URL and restart.'
+  not_prepared: 'The current deployed revision has no screen pack yet. Run /wellui screenpack <project>, then retry.'
+  pack_prompt: 'WellUI screen resources are required to display this interface.'
+  pack_sent: 'SCREEN requested its resource pack. Accept it in Minecraft; opening waits up to 90 seconds for successfully loaded status.'
+  pack_unavailable: 'The required pack was declined, failed, discarded or timed out. Check delivery URL/client pack settings and debug pack state; retry to request it again.'
+  selection: 'Requested {requested}; reason: {reason} Selected: {selected}.'
+  open_failed: 'Requested renderer {renderer} failed: {reason} No fallback was opened for this initialization error.'
+  revision_changed: 'The project changed while its pack loaded. Open it again to request the current revision.'
+  controls: 'Look to move the WellUI cursor; left click a button. Walk, jump or fly normally. Sneak or /wellui close to exit; turning far away also closes.'
+  limits: 'SCREEN uses a translating world plane: the world and crosshair remain visible. First-person camera recommended; ESC opens the game menu.'
+  document_limits: 'SCREEN supports at most 16 buttons, canvas dimensions >=32, and aspect ratios between 1:10 and 10:1.'
+  deploy_warning: 'Project deployed, but SCREEN preparation failed: {reason}'
+  pack_usage: 'Usage: /wellui screenpack <project>'
+  packed: 'SCREEN pack: {path} | {bytes} bytes | {millis} ms | SHA-256 {hash} | SHA-1 {sha1} | delivery: {url}'
+  export_limit: 'The pack host reached 4096 immutable exports in this process. Restart to republish current revisions.'
+  graph_invalid: 'SCREEN ZIP resource graph is invalid for the 1.21.11 items atlas. The pack was not published. Rebuild with the current plugin and inspect the log.'
+  no_graph: 'SCREEN resource graph: no validated pack prepared in this process.'
+  resources: 'Latest prepared SCREEN project={project} | resource graph=VALIDATED (server-side) | SHA-256={hash} | profile={profile} | ZIP={path} | bytes={bytes} | atlas={atlas} | base item_model={baseItem} | base model={baseModel} | base texture={baseTexture} | cursor item_model={cursorItem} | cursor model={cursorModel} | cursor texture={cursorTexture} | hover graphs={hovers} | unique sprites={sprites}. Pack LOADED, graph validation and spawn packet sends do not prove client appearance.'
+  debug: 'SCREEN | default={mode} | last selection={selection} | spawned sessions (packets sent)={sessions} | visual entities={visuals} | hitboxes={hitboxes} | updates/sec={updates} | input events/sec={inputs} | packet sends={sends} | average preparation={millis} ms | delivery={delivery} | client pack states={states} | server-validated prepared graphs={graphs}'
+  verify:
+    usage: 'Usage: /wellui packverify or /wellui packrepair (no arguments).'
+    difference: 'Semantic diagnostic: {detail}'
+    passed: 'WellUI pack verification passed. {report}'
+    repaired: 'WellUI managed source reconciled. Other content and compiled output were not changed. Run /iazip, then /wellui packverify, then let ItemsAdder deliver its rebuilt pack.'
+    not_external: 'Pack verification: no external provider is configured.'
+    none: 'None'
+    state_ok: 'OK'
+    state_unknown: 'UNKNOWN'
+    state_failed: 'FAILED'
+    state_stale: 'STALE'
+    report: 'Provider={provider} | Owner={owner} | WellUI generation={generation} | Source generation={sourceGeneration} | Compiled WellUI contribution={compiledGeneration} (not an ItemsAdder build ID) | Managed root={root} | Files={files} | Source integrity={source} | Compiled resources={output} | Compiled model semantics={models} | Texture pixels={pixels} | Compiler rewrites accepted={rewrites} (SEMANTICALLY_EQUIVALENT_REWRITE) | Atlas contribution={atlas} | Build required={build} | Conflict={conflict} | Reason={reason} | Legacy manifest={legacy}'
+    wellui_source_modified: 'WELLUI_SOURCE_MODIFIED: owned source {resource} differs from its manifest. Back up intentional edits, then run /wellui packrepair to restore generated WellUI sources.'
+    wellui_source_missing: 'WELLUI_SOURCE_MISSING: owned source or manifest {resource} is missing. Run /wellui packrepair; an existing unrecorded namespace will not be overwritten.'
+    source_manifest_invalid: 'SOURCE_MANIFEST_INVALID: {resource} is malformed or contains unsafe/non-WellUI entries. Restore the WellUI manifest backup; do not delete ItemsAdder content.'
+    source_generation_stale: 'SOURCE_GENERATION_STALE: {resource} does not describe the current WellUI deployment. Run /wellui packrepair, then /iazip and /wellui packverify.'
+    wellui_resource_shadowed: 'WELLUI_RESOURCE_SHADOWED: compiled resource {resource} changes required rendering semantics. Resolve the reported model/texture/atlas difference, then rebuild with your pack provider. Healthy source does not need packrepair.'
+    generated_output_not_built: 'GENERATED_OUTPUT_NOT_BUILT: {resource} is absent. Run /iazip, then /wellui packverify.'
+    itemsadder_build_required: 'ITEMSADDER_BUILD_REQUIRED: the compiled pack lacks current WellUI resource {resource}. Run /iazip, then /wellui packverify. This is stale output, not source corruption.'
+    itemsadder_output_unreadable: 'ITEMSADDER_OUTPUT_UNREADABLE: cannot safely read {resource}. Wait for /iazip to finish and verify again; check the configured output path/ZIP if this persists.'
+    output_profile_unsupported: 'OUTPUT_PROFILE_UNSUPPORTED: {resource} does not support the 1.21.11 resource profile. Rebuild ItemsAdder for the configured client version.'
+    atlas_unsupported: 'ATLAS_UNSUPPORTED: cannot prove sprite resolution for {resource}. Keep direct WellUI sprites in the generated items atlas; no files were modified.'
+    atlas_sprite_missing: 'ATLAS_SPRITE_MISSING: {resource} is absent or removed by the generated items atlas. Correct that atlas contribution/filter and rebuild ItemsAdder.'
+    external_namespace_collision: 'EXTERNAL_NAMESPACE_COLLISION: unrecorded file {resource} occupies the reserved WellUI namespace. Back up and relocate the conflicting source; repair will not overwrite it.'
+    unsafe_path: 'UNSAFE_PATH: {resource} escapes ownership boundaries or uses a link/reparse point. Use a real directory inside the managed source root; no unsafe files were changed.'
+validation:
+  document: 'The document is invalid.'
+  document_size: 'The document exceeds the size limit.'
+  schema: 'Unsupported document schema version.'
+  project_id: 'Use a lowercase project ID with letters, numbers, hyphens or underscores.'
+  name: 'Give the project a name of at most 128 characters.'
+  canvas: 'Canvas dimensions must be positive and at most 16384.'
+  depth: 'The component tree is nested too deeply.'
+  component_limit: 'A project may contain at most 500 components.'
+  component_id: 'A component identifier is invalid.'
+  duplicate_id: 'Two components have the same identifier.'
+  layout: 'A component has invalid position, size or anchor.'
+  style: 'Check the component colors, opacity and font size.'
+  text: 'Text is too long or contains unsupported control characters.'
+  asset: 'An image reference is invalid.'
+  action: 'Choose a supported action and value.'
+  command: 'Enter a player command without a leading slash or line breaks.'
+
+logic:
+  schema: 'This logic graph uses an unsupported schema.'
+  limit: 'A graph supports 128 nodes, 256 connections and 32 session variables.'
+  variable: 'Choose a declared session variable with the correct type.'
+  duplicate_id: 'Node identifiers must be valid and unique.'
+  position: 'Node coordinates must be finite and between -100000 and 100000.'
+  node_type: 'Choose a supported node type.'
+  settings: 'This node contains unsupported settings.'
+  setting: 'Complete this node''s required settings using the correct types.'
+  component: 'Choose an existing component of the required kind.'
+  duplicate_event: 'Only one starting node is allowed for each event and component.'
+  permission: 'Enter a valid permission.'
+  project: 'Choose an existing project; deploy the destination before deploying this link.'
+  opacity: 'Opacity must be a number between 0 and 1.'
+  command: 'Enter a player command without a leading slash or control characters.'
+  delay: 'Delay must be a whole number between 1 and 1200 ticks.'
+  placeholder: 'Enter a placeholder enclosed in percent signs.'
+  placeholder_unavailable: 'PlaceholderAPI is unavailable. Conditions return false; placeholder value paths stop safely.'
+  operator: 'Choose a supported numeric comparison.'
+  missing_node: 'A connection references a missing node.'
+  port: 'A connection references a missing port.'
+  type: 'Connect ports and values with matching types.'
+  input_duplicate: 'A value input accepts one connection.'
+  output_duplicate: 'An execution output accepts one connection. Use Sequence for multiple paths.'
+  input_missing: 'Connect or enter the required input value.'
+  cycle_or_depth: 'Remove cycles and keep connection depth at most 32.'
+  unreachable: 'This node is not connected to an event.'
+  disconnected: 'This event has no connected behavior.'
+  budget: 'This event reached its limit of 128 execution steps.'
+  continuations: 'This session already has 8 delayed continuations.'
+  open_chain: 'This automatic open chain reached its limit of 8 replacements.'
+  failed: 'Logic execution stopped safely after an error.'
+  depth: 'Value evaluation exceeded the depth limit.'
+  value_source: 'This node cannot provide a value.'
+  text_limit: 'Session text supports at most 2048 characters.'
+  hud_dynamic: 'HUD cannot display session visual changes. Use SCREEN within its limits or Inventory.'
+  screen_layers: 'Dynamic SCREEN projects support up to 16 components, including panels and their children.'
+  denied: 'The player lacks permission to open the destination.'
+  session_closed: 'This session has closed. Pending logic was cancelled.'
+  text_transport: 'The active packet transport cannot display dynamic text.'
+  invalid: 'The logic graph is invalid. Check its fields and connections.'
+  fields: 'The graph contains missing or unsupported fields.'
+  json: 'The logic graph JSON is malformed.'
+  project_in_use: 'Another saved or deployed project links to this interface.'
+  value: 'Use a valid typed value.'
+  number: 'Numbers must be finite and have magnitude at most one trillion.'
+  boolean: 'Boolean values must be true or false.'
+
+animation:
+  schema: 'Unsupported animation schema.'
+  json: 'Animation fields, property, loop, end behavior or easing are invalid.'
+  limit: 'Animation limits: 32 animations, 128 tracks and 2048 keyframes per project.'
+  id: 'Animation IDs must be valid and unique.'
+  name: 'Animation names must contain 1–128 readable characters.'
+  duration: 'Animation duration must be 1–1200 integer ticks.'
+  tracks: 'Add at least one animation track.'
+  component: 'An animation targets a missing component. Remove or retarget its track.'
+  track_duplicate: 'An animation can contain only one track per component and property.'
+  keyframes: 'A track requires 1–64 keyframes.'
+  time: 'Keyframes must have unique increasing integer ticks within the duration.'
+  value: 'Use a finite value within the property bounds: scale 0.01–16, opacity 0–1, visibility 0/1.'
+  screen_layers: 'This animation project exceeds SCREEN’s 16 independent component limit, including affected descendants and interactive buttons.'
+  reference: 'Choose an existing animation in the Logic node.'
+  active_limit: 'This session already has 8 active, paused or held animations. Stop one before playing another.'
+  inventory_transform: 'Transform animations require SCREEN. Inventory supports binary visibility/opacity only.'
+  hud: 'Animations require SCREEN; Glyph HUD does not support animation.'
+  unavailable: 'Animation playback is unavailable for this session.'
+  operation: 'Unsupported animation operation.'
+  transport: 'This SCREEN transport does not support animation transforms.'
+  bounds: 'Animated/interactive layers must have authored bounds inside the canvas. Use translation keyframes for entrances.'
+control.renderer_unsupported: 'This interface contains controls that require SCREEN. Inventory and HUD cannot represent them.'
+screen.verify.provider_build_required: 'WellUI source was exported. Rebuild and send the pack with your selected provider; readiness will reconcile automatically.'
+screen.verify.provider_output_unreadable: 'The provider output ZIP is missing, unstable or unreadable. Check screen.packs.provider-zip against your provider configuration.'
+deploy.unchanged: 'Already deployed: no changes. Existing visual resources were reused.'
+
+control.axis: "Scroll direction must be horizontal or vertical."
+control.form_value: "Set individual field values; form validity is computed automatically."
+control.input_length: "The text exceeds the field length or contains unsupported control characters."
+control.input_transport: "Native input is unavailable on this transport."
+control.length: "Use integer input lengths from 1 to 512; minimum must not exceed maximum."
+control.limit: "A project may contain at most 64 controls."
+control.logic_target: "Choose a control supported by this Logic node."
+control.logic_type: "The value type must match the target control."
+control.multiline_unsupported: "Multiline input is not supported by the native input dialog."
+control.nested_viewport_control: "Nested viewports and interactive fields inside clipped viewports are unsupported. Use ordinary buttons, text and images."
+control.option: "Choose an enabled option."
+control.options: "Select requires 1–32 unique options with nonempty labels and values."
+control.pattern: "Use one character class and bounded repetition, for example [A-Za-z]{1,32}."
+control.range: "Check slider minimum, maximum and positive step."
+control.screen_layers: "The project exceeds the prepared SCREEN layer budget (16 independent layers / 33 total)."
+control.screen_quality: "Reduce component area or variants to preserve readable SCREEN resolution."
+control.scroll_children: "A viewport supports at most 32 descendant components."
+control.scroll_speed: "Scroll speed must be between 1 and 4096 reference pixels."
+control.scroll_steps: "Use a larger scroll speed or less content; at most 32 scroll positions are supported."
+control.scroll_value: "Scroll position must be finite."
+control.select_bounds: "Select needs at least 40×20 pixels and must fit inside the canvas."
+control.setting: "Unknown control property."
+control.settings: "A control property has an invalid type or value."
+control.target: "Attach field controls to buttons and forms or viewports to panels."
+control.text_limit: "Placeholder and validation messages are limited to 128 characters."
+control.viewport_child_animation: "Animate the whole viewport or its ancestors; independent child animation inside a clipped viewport is unsupported."
+control.viewport_child_dynamic: "Clipped children must keep prepared text, visibility and opacity. Animate or hide the whole viewport."
+deploy.dependencies_limit: "A deployment may include at most 64 linked projects."
+editor.error.revision_conflict: "A linked project changed on the server. Reload and reconcile it before deploying."
+storage.slug_conflict: "This internal project ID conflicts with an existing command slug."
+storage.slugs: "The project slug registry is invalid. Restore its backup before continuing."
+screen.auto_url: "Pack URLs use each player's join hostname. Set screen.packs.public-url for a proxy or NAT."
+
+control.required: 'Required'
+control.too_short: 'Too short'
+control.too_long: 'Too long'
+control.invalid_format: 'Invalid format'
+control.out_of_range: 'Out of range'
+control.clear: 'Clear'
+screen.packload_usage: 'Usage: /wellui packload [player]'

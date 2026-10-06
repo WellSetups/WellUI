@@ -1,0 +1,77 @@
+# Managed schema. /wellui migrate preserves a backup before upgrading older files.
+config-version: 1
+# Missing translations fall back to en_US. Add lang/<locale>.yml for another locale.
+locale: en_US
+editor:
+  # These editor settings require a restart. No Node.js process is needed.
+  enabled: true
+  # Keep this loopback address unless intentionally placing a secured proxy in front.
+  bind: 127.0.0.1
+  port: 8765
+  # Explicit opt-in is required for a non-loopback bind.
+  allow-remote: false
+  # Optional HTTPS origin of your reverse proxy, without a path. Preserve the Host header.
+  # Remote clients otherwise use an SSH tunnel to the loopback port.
+  public-url: ''
+assets:
+  # PNG uploads only; maximum width and height are 2048 pixels. Restart required.
+  max-bytes: 2097152
+runtime:
+  # Placeholder caching interval: 500-60000 ms. Views refresh centrally once per second.
+  placeholder-refresh-ms: 1000
+  # Minimum interval between accepted button clicks: 100-10000 ms.
+  click-cooldown-ms: 250
+  # Simple alternating button item color; not a general animation timeline.
+  pulse-buttons: true
+# Screen settings require restart. Exact server/client profiles: Paper family 1.21.11 and 26.3.
+renderer:
+  default: AUTO
+  fallback-inventory: true
+screen:
+  # Advanced presentation/raster settings: defaults work without manual pack formats.
+  presentation:
+    # Advanced first-person plane distance, 1–6 blocks. Default needs no tuning; restart required.
+    distance: 2.0
+  raster:
+    quality: AUTO
+    max-dimension: 2048
+    # AUTO preserves small palette-based pixel art; SMOOTH/PIXELATED override for all images.
+    images: AUTO
+  packs:
+    # AUTO selects a single detected ItemsAdder/Oraxen/Nexo owner. Multiple owners require explicit selection.
+    integration: AUTO
+    # ON_JOIN offers once after preparation settles; ON_FIRST_UI, MANUAL, EXTERNAL_OWNER are alternatives.
+    preload: ON_JOIN
+    itemsadder-zip: 'output/generated.zip'
+    # New installations serve ZIPs automatically when no external provider owns delivery.
+    # Existing configurations retain their chosen mode. EXTERNAL_URL and EXPORT_ONLY remain available.
+    mode: SELF_HOSTED
+    # Separate public ZIP-only service. Allow this port through your firewall for remote clients.
+    bind: 0.0.0.0
+    port: 8766
+    # AUTO uses the hostname the player joined. With a proxy/NAT/CDN, set the reachable HTTP(S) origin.
+    public-url: AUTO
+    # Upload each generated <sha256>.zip to this template URL before opening (external upload is manual).
+    external-url: ''
+metrics:
+  # Standard anonymous bStats (34331); also respects plugins/bStats/config.yml. Restart required.
+  enabled: true
+# Subcommand labels are reloadable. Root /wellui and /wui use static plugin registration.
+# Use the server's commands.yml aliases for additional root labels; restart the server.
+commands:
+  help: help
+  editor: editor
+  open: open
+  close: close
+  reload: reload
+  list: list
+  info: info
+  debug: debug
+  pack: pack
+  migrate: migrate
+  hudpack: hudpack
+  preview: preview
+  screenpack: screenpack
+  packload: packload
+  packverify: packverify
+  packrepair: packrepair
